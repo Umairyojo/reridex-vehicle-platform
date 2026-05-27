@@ -1,0 +1,2156 @@
+/* src/Pages/Home/Home.module.css */
+
+* {
+  box-sizing: border-box;
+}
+
+.homeContainer {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #fdfdfd;
+  font-family: "Inter", sans-serif;
+}
+.textRed {
+  color: #004aad;
+}
+
+/* ==========================================
+   SHARED DESKTOP SLIDER MECHANICS
+   ========================================== */
+.desktopHero {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.sliderTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+.heroSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.sliderDots {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 20;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+.activeDot {
+  background-color: #004aad;
+  border: 2px solid white;
+  transform: scale(1.4);
+}
+
+/* ==========================================
+   🔥 DESKTOP SLIDE 1: BLUE PREMIUM
+   ========================================== */
+.redBannerSlide {
+  padding: 0 4%;
+  justify-content: space-between;
+  z-index: 1;
+}
+.rbBgEffects {
+  position: absolute;
+  inset: 0;
+  background-color: #004aad;
+  background-image: linear-gradient(135deg, #005cda 0%, #001f4d 100%);
+  z-index: -1;
+}
+.rbDotPattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 2px,
+    transparent 2px
+  );
+  background-size: 24px 24px;
+}
+.rbCircleGlow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 60%
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rbLeft {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.rbBikeImg {
+  width: 130%;
+  max-width: 700px;
+  margin-left: -15%;
+  object-fit: contain;
+  filter: drop-shadow(15px 25px 20px rgba(0, 0, 0, 0.4));
+}
+.rbCenter {
+  width: 34%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 10;
+  padding: 0;
+}
+.rbMainTitle {
+  font-weight: 900;
+  font-size: clamp(2.5rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.rbTextYellow {
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #ffc107;
+}
+.rbTextMassive {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+.rbBadgeWhite {
+  background: white;
+  color: #004aad;
+  font-weight: 900;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+.rbDescription {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  max-width: 90%;
+}
+.rbActionBtn {
+  background: #ffc107;
+  color: #121212;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.rbActionBtn:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+.rbRight {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.rbInspectionImg {
+  width: 120%;
+  max-width: 600px;
+  margin-right: -10%;
+  object-fit: contain;
+  filter: drop-shadow(-15px 25px 20px rgba(0, 0, 0, 0.4));
+}
+
+/* ==========================================
+   🔥 DESKTOP SLIDE 2: DARK DIAGONAL
+   ========================================== */
+.darkBannerSlide {
+  padding: 0 5%;
+  z-index: 1;
+  background-color: #121212;
+}
+.dsImageBase {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 0;
+}
+.dsCoverImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 25%;
+}
+.dsLeftOverlay {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 55%;
+  height: 100%;
+  background-color: #121212;
+  transform: skewX(20deg);
+  border-right: 8px solid #004aad;
+  z-index: 1;
+}
+.dsTextContent {
+  position: relative;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  color: white;
+  z-index: 10;
+  padding-left: 2rem;
+}
+.dsBadge {
+  background: rgba(0, 74, 173, 0.2);
+  color: #66b2ff;
+  border: 1px solid #004aad;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+.dsMainTitle {
+  font-weight: 900;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.dsTextYellow {
+  color: #ffc107;
+  font-size: clamp(3rem, 5vw, 4.2rem);
+}
+.dsDescription {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #bbb;
+  margin-bottom: 2.5rem;
+  max-width: 95%;
+  font-weight: 400;
+}
+.dsActionBtn {
+  background: transparent;
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid #004aad;
+  transition: 0.3s;
+}
+.dsActionBtn:hover {
+  background: #004aad;
+  transform: translateY(-4px);
+}
+
+/* ==========================================
+   🔥 DESKTOP SLIDE 3: CUTOUT LAYOUT
+   ========================================== */
+.cutoutSlide {
+  background: linear-gradient(to right, #ffffff 0%, #f4f7f9 100%);
+  padding: 0;
+}
+.csTextContainer {
+  width: 45%;
+  padding-left: 8%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.csBadge {
+  background: #e3f2fd;
+  color: #004aad;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+.csTitle {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.csHighlight {
+  color: #004aad;
+}
+.csDesc {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.csFeatures {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.csFeature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #121212;
+  font-size: 1.1rem;
+}
+.csFeatureIcon {
+  background: #ffc107;
+  color: #121212;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.csBtn {
+  background: #121212;
+  color: white;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  font-weight: 800;
+  text-decoration: none;
+  width: fit-content;
+  transition: 0.3s;
+}
+.csBtn:hover {
+  background: #004aad;
+  transform: translateY(-3px);
+}
+.csImageContainer {
+  width: 55%;
+  height: 100%;
+  position: relative;
+}
+.csImageContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 100%;
+  height: 100%;
+  background-color: #ffc107;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+.csImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 2;
+}
+.csImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* ==========================================
+   🔥 DESKTOP SLIDE 4: SWEEPING CURVE 
+   ========================================== */
+.htdSlide {
+  background-color: #0b0f19;
+}
+.htdBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 100%;
+  z-index: 0;
+}
+.htdImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.htdOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(11, 15, 25, 1) 0%,
+    rgba(11, 15, 25, 0) 100%
+  );
+}
+.htdCurvePane {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #0b0f19;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8%;
+  border-radius: 0 400px 400px 0;
+  border-right: 12px solid #ff5722;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+}
+.htdContent {
+  max-width: 480px;
+  position: relative;
+  z-index: 11;
+}
+.htdBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 87, 34, 0.1);
+  color: #ff5722;
+  border: 1px solid #ff5722;
+  padding: 8px 22px;
+  border-radius: 30px;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+.htdTitle {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.htdHighlight {
+  color: #ff5722;
+  font-size: clamp(3rem, 5vw, 4.2rem);
+}
+.htdRefundBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffc107;
+  color: #121212;
+  padding: 10px 25px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  transform: rotate(-3deg);
+}
+.htdCheck {
+  background: #121212;
+  color: #ffc107;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.htdDesc {
+  font-size: 1.2rem;
+  color: #a0aabf;
+  margin-bottom: 3rem;
+  max-width: 90%;
+}
+.htdBtn {
+  background: linear-gradient(90deg, #ff5722 0%, #ff9800 100%);
+  color: white;
+  padding: 1.2rem 3.5rem;
+  border-radius: 50px;
+  font-weight: 900;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+.htdBtn:hover {
+  transform: translateY(-5px);
+}
+
+/* ==========================================
+   🔥 DESKTOP SLIDE 5: CINEMATIC WEB BANNER 
+   ========================================== */
+.cwbSlide {
+  background-color: #000;
+}
+.cwbBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  animation: slowZoom 20s linear infinite alternate;
+}
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+.cwbOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.cwbContent {
+  position: relative;
+  z-index: 10;
+  width: 50%;
+  padding-left: 8%;
+  color: white;
+}
+.cwbBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffc107;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+}
+.cwbTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+.cwbHighlight {
+  color: #ffc107;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+}
+.cwbDesc {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 90%;
+}
+.cwbBtnPrimary {
+  background: #ffc107;
+  color: #121212;
+  padding: 1.2rem 3.5rem;
+  border-radius: 50px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+/* ==========================================
+   🔥 COMPACT "SELL NOW" BANNER
+   ========================================== */
+.whySellSection {
+  width: 100%;
+  padding: 4rem 5%;
+  background-color: #f4f7f9;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.wsContainer {
+  width: 100%;
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  gap: 4rem;
+}
+
+.wsLeft {
+  width: 35%;
+  flex-shrink: 0;
+}
+.wsImageBox {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #004aad;
+  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+.wsRight {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wsTag {
+  color: #004aad;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.wsTitle {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.wsHighlight {
+  color: #004aad;
+}
+.wsDesc {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 95%;
+}
+
+.wsFeaturesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+.wsFeaturePill {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #121212;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+.wsFeaturePill:hover {
+  border-color: #004aad;
+  background: #e3f2fd;
+}
+.wsIcon {
+  font-size: 1.1rem;
+}
+
+.wsBtn {
+  background: #ffc107;
+  color: #121212;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+  cursor: pointer;
+}
+.wsBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 193, 7, 0.4);
+}
+
+/* ==========================================
+   🔥 "WHY CHOOSE RERIDEX" (5-IN-1 ROW)
+   ========================================== */
+.whyChooseSection {
+  width: 100%;
+  padding: 5rem 5%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wcHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+}
+.wcLine {
+  height: 2px;
+  background-color: #e2e8f0;
+  flex-grow: 1;
+  max-width: 200px;
+}
+.wcHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #121212;
+  margin: 0;
+  text-align: center;
+}
+
+.wcGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.wcCard {
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+.wcCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.08);
+  border-color: #004aad;
+  background: #ffffff;
+}
+
+.wcText {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 15px;
+}
+.wcText h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #121212;
+  margin-bottom: 8px;
+}
+.wcText p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.wcIconBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  flex-grow: 1;
+}
+.wcIconBg {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 60px;
+  height: 60px;
+  background: #e3f2fd;
+  border-radius: 50%;
+  z-index: 1;
+  transition: 0.3s;
+}
+.wcCard:hover .wcIconBg {
+  background: #ffc107;
+  transform: scale(1.2);
+}
+.wcIcon {
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 2;
+  right: 5px;
+  bottom: 5px;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.mobileOnly {
+  display: none !important;
+}
+.desktopOnly {
+  display: grid !important;
+}
+
+/* ==========================================
+   🔥 PREMIUM "BUY NOW" SECTION
+   ========================================== */
+.buyNowSection {
+  width: 100%;
+  padding: 0 5% 5rem;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.bnContainer {
+  width: 100%;
+  max-width: 1100px;
+  background: #111827;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  gap: 4rem;
+}
+
+.bnTextContent {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bnTag {
+  color: #60a5fa;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.bnTitle {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.bnHighlight {
+  color: #ffc107;
+}
+.bnDesc {
+  font-size: 1.05rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 95%;
+}
+
+.bnFeaturesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+.bnFeaturePill {
+  background: #1f2937;
+  border: 1px solid #374151;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+.bnFeaturePill:hover {
+  border-color: #60a5fa;
+  background: #1e3a8a;
+  color: #ffffff;
+}
+.bnIcon {
+  font-size: 1.1rem;
+}
+
+.bnBtn {
+  background: #004aad;
+  color: #ffffff;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 74, 173, 0.3);
+  border: 2px solid #004aad;
+}
+.bnBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 74, 173, 0.4);
+  background: transparent;
+  color: #60a5fa;
+}
+
+.bnImageContent {
+  width: 35%;
+  flex-shrink: 0;
+}
+.bnImageBox {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1f2937;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bnImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
+}
+
+/* ==========================================
+   🔥 LEAD GEN FORM (VALUATION)
+   ========================================== */
+.valuationSection {
+  position: relative;
+  width: 100%;
+  padding: 6rem 5%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+.valBgImage {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1558980394-0a37b360b094?q=80&w=1920&auto=format&fit=crop")
+    no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+}
+.valOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 15, 25, 0.98) 0%,
+    rgba(11, 15, 25, 0.8) 100%
+  );
+}
+
+.valContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.valTextWrap {
+  width: 45%;
+  color: white;
+}
+.valTag {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  padding: 6px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+.valTitle {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.valHighlight {
+  color: #ffc107;
+}
+.valDesc {
+  font-size: 1.2rem;
+  color: #a0aabf;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.valStats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.valStatItem {
+  display: flex;
+  flex-direction: column;
+}
+.valStatItem strong {
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.valStatItem span {
+  font-size: 0.85rem;
+  color: #a0aabf;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.valDivider {
+  width: 2px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.valWidgetWrap {
+  width: 55%;
+  position: relative;
+}
+.valWidget {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vwTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #121212;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.vwFormGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 12px;
+}
+.vwInputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.vwInputGroup {
+  background: #f4f7f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+.vwInputGroup:focus-within {
+  border-color: #004aad;
+  background: #fff;
+}
+
+.errorBorder {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+.errorText {
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 4px;
+  padding-left: 5px;
+}
+
+.vwIcon {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.vwInput {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.95rem;
+  color: #121212;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  outline: none;
+}
+.vwInput::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+.vwInput:disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.vwSelect {
+  appearance: none;
+  cursor: pointer;
+  background: transparent
+    url("data:image/svg+xml;utf8,<svg fill='%23999' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+    no-repeat right 0px center;
+  background-size: 18px;
+  padding-right: 20px;
+}
+.vwSelect option {
+  color: #121212;
+  background: #fff;
+}
+
+.spanTwo {
+  grid-column: span 2;
+}
+
+.vwBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #004aad;
+  color: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: 0.3s;
+}
+.vwBtn:hover {
+  background: #ffc107;
+  color: #121212;
+  transform: translateY(-2px);
+}
+
+.vwFloatBadge {
+  position: absolute;
+  bottom: -20px;
+  left: -30px;
+  background: #ffffff;
+  color: #121212;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #e2e8f0;
+  animation: floatVal 3s ease-in-out infinite;
+}
+.vwSupportIcon {
+  font-size: 1.2rem;
+  color: #004aad;
+}
+
+@keyframes floatVal {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==========================================
+   🔥 CUSTOMER REVIEWS
+   ========================================== */
+.reviewsSection {
+  width: 100%;
+  padding: 5rem 0 7rem;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.revHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+  padding: 0 5%;
+}
+.revHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #121212;
+  margin: 0;
+  text-align: center;
+}
+
+.revSliderContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+}
+.revSliderContainer::before,
+.revSliderContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.revSliderContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+}
+.revSliderContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #f8f9fa 0%, transparent 100%);
+}
+
+.revSliderTrack {
+  display: flex;
+  width: max-content;
+  gap: 30px;
+  animation: scrollReviews 40s linear infinite;
+  padding: 0 15px;
+}
+.revSliderTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollReviews {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+.revCard {
+  width: 340px;
+  flex-shrink: 0;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s;
+  cursor: default;
+}
+.revCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.08);
+  border-color: #004aad;
+}
+
+.revTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.revQuoteIcon {
+  font-size: 3.5rem;
+  color: #e3f2fd;
+  font-family: Georgia, serif;
+  line-height: 0.5;
+  font-weight: 900;
+  margin-top: 10px;
+}
+.revStars {
+  color: #ffc107;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.revText {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.revAuthorRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1.2rem;
+}
+.revAvatar {
+  width: 45px;
+  height: 45px;
+  background: #e3f2fd;
+  color: #004aad;
+  font-weight: 900;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.revAuthorDetails {
+  display: flex;
+  flex-direction: column;
+}
+.revName {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #121212;
+  margin: 0 0 3px 0;
+}
+.revLocation {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 600;
+}
+
+/* ==========================================
+   📱 THE MASTER RESPONSIVE SYSTEM
+   ========================================== */
+
+.mobileDashboard {
+  display: none;
+}
+
+/* ========================================================
+   1. TABLETS & FOLDABLES (iPads, Surface Pro <= 1024px)
+   ======================================================== */
+@media (max-width: 1024px) {
+  /* 🔥 MAGIC FLEXBOX REORDERING: Lets us shuffle sections on mobile! */
+  .homeContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desktopHero {
+    display: none !important;
+  }
+
+  /* Dashboard background setup */
+  .mobileDashboard {
+    order: 1;
+    display: block;
+    padding: 1rem 0 3rem;
+    background: #e6f2ff;
+  }
+
+  /* 🔥 DYNAMIC BUY TAB FLOW */
+  .isBuyTab .buyNowSection { order: 2; display: flex; }
+  .isBuyTab .whyChooseSection { order: 3; }
+  
+  /* 🔥 DYNAMIC SELL TAB FLOW */
+  .isSellTab .whyChooseSection { order: 2; }
+  .isSellTab .whySellSection { order: 3; display: flex; }
+  .isSellTab .valuationSection { order: 4; display: flex; }
+
+  /* Always keep reviews at the very bottom */
+  .reviewsSection { order: 10; }
+
+  /* --- iPad specific sizing constraints --- */
+  .tabContainer {
+    display: flex;
+    margin: 0 5%;
+    background: #fff;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  .tabBtn {
+    flex: 1;
+    padding: 1.4rem 0;
+    font-weight: 900;
+    border: none;
+    background: #fff;
+    border-bottom: 4px solid #f0f0f0;
+    color: #a0aabf;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 16px 16px 0 0;
+    transition: 0.3s;
+  }
+  .activeTab {
+    color: #004aad;
+    border-bottom: 4px solid #004aad;
+  }
+
+  .mobileContentArea {
+    background: transparent;
+    margin: 0 5%;
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .mobileSliderWrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 🔥 FIX: Constrain iPad image sizes so they don't blow out */
+  .mCard {
+    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #e6f2ff;
+    padding: 30px 40px 60px 40px; /* Thicker padding for tablets */
+    box-sizing: border-box;
+    align-items: center; /* Centers the content */
+  }
+
+  .mcImageArea {
+    width: 100%;
+    max-width: 600px; /* 🔥 Stops the image from getting too wide on iPad */
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* Switched to white so the pngs blend nicer */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the bike vertically */
+  }
+
+  .mcImg {
+    width: 90%; /* Slight shrink so it doesn't touch the edges */
+    height: 90%;
+    object-fit: contain; /* 🔥 CRITICAL: Stops the zooming/cropping on iPad */
+  }
+
+  .mDualImageWrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 5%;
+  }
+  .mPngLeft, .mPngRight {
+    height: 90%;
+    max-width: 48%;
+    object-fit: contain;
+  }
+  .mBg_blue { background: linear-gradient(135deg, #005cda 0%, #001f4d 100%); }
+
+  .mcTextArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px 10px;
+    max-width: 700px; /* Keeps text readable on wide tablets */
+  }
+  .mcBadge {
+    background: #ffffff; color: #004aad;
+    padding: 8px 20px; border-radius: 20px;
+    font-size: 1rem; font-weight: 800;
+    margin-bottom: 15px; border: 1px solid #004aad;
+    width: fit-content; box-shadow: 0 2px 6px rgba(0, 74, 173, 0.15);
+  }
+  .mcTitle {
+    font-size: 2.5rem; font-weight: 900; line-height: 1.2;
+    color: #121212; margin-bottom: 10px; text-transform: uppercase;
+  }
+  .mcHighlight { color: #004aad; }
+  
+  .mcTitleSub {
+    font-size: 1.5rem; font-weight: 800; background: #ffc107;
+    color: #121212; padding: 5px 20px; border-radius: 8px;
+    display: inline-block; margin-bottom: 15px;
+  }
+  .mcDesc {
+    font-size: 1.2rem; color: #555; line-height: 1.5;
+    margin-bottom: 25px; font-weight: 500;
+  }
+  .mcFeatures {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 25px; width: 100%; align-items: center;
+  }
+  .mcFeatureItem {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 700; color: #121212; font-size: 1.1rem;
+  }
+  .mcBtn {
+    background: #ffc107; color: #121212; padding: 15px 45px;
+    border-radius: 50px; font-weight: 900; text-decoration: none;
+    display: inline-block; font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    width: fit-content;
+  }
+
+  .mobileDotsContainer {
+    position: absolute; bottom: 25px; left: 0;
+    width: 100%; display: flex; justify-content: center; gap: 10px; z-index: 50;
+  }
+  .mDot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #cbd5e1; cursor: pointer; transition: 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .activeMDot { background: #004aad; transform: scale(1.4); border-color: transparent; }
+
+  .hideOnMobile { display: none !important; }
+
+  /* 🔥 FIX: Tablets need these containers to be row-based, not column based like phones */
+  .wsContainer, .bnContainer, .valContainer {
+    flex-direction: row; /* Keep side-by-side on iPad */
+    gap: 2rem;
+    padding: 2.5rem;
+    align-items: center;
+  }
+  .wsLeft, .bnImageContent {
+    width: 40%; /* Adjusted split for iPad */
+    margin: 0;
+  }
+  .wsRight, .bnTextContent {
+    width: 60%;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .valTextWrap { width: 45%; }
+  .valWidgetWrap { width: 55%; }
+
+  .desktopOnly { display: none !important; }
+  .mobileOnly { display: grid !important; }
+  h2.mobileOnly { display: block !important; }
+
+  .wcHeader h2 { font-size: 2.2rem; }
+  .wcGrid { grid-template-columns: repeat(3, 1fr); } /* 3 columns on iPad looks best */
+
+  /* 🔥 FIXED: Mobile Categories Layout for iPad/Tablets */
+  .mcCategorySection {
+    padding: 1.5rem 5% 2rem;
+    display: block;
+  }
+  .mcCatHeader {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .mcCatTitle {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #121212;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+  .mcCatHighlight {
+    color: #004aad;
+  }
+  .mcCatSub {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+  }
+
+  /* Set iPad to a nice 2x2 grid so they are big and clickable */
+  .mcCatGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .mcCatCard {
+    background: #f4f7f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    position: relative;
+    height: 160px; /* Slightly taller for iPad */
+    overflow: hidden; /* 🔥 THIS IS THE MAGIC LINE THAT STOPS THE IMAGE FROM EXPLODING */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .mcCatName {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #004aad;
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    line-height: 1.2;
+    max-width: 50%;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
+  }
+
+  /* Constrain the image to fit the box */
+  .mcCatCutout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: right center;
+    transition: transform 0.3s ease;
+  }
+
+  .mcCatCard:hover {
+    border-color: #004aad;
+    box-shadow: 0 8px 20px rgba(0, 74, 173, 0.1);
+  }
+  .mcCatCard:hover .mcCatCutout {
+    transform: scale(1.05);
+  }
+
+  .mcCatMainBtn {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: #004aad;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 74, 173, 0.3);
+  }
+}
+
+/* ========================================================
+   2. STANDARD MOBILE PHONES (iPhone 14/15, Androids <= 768px) 
+   ======================================================== */
+@media (max-width: 768px) {
+  .mCard {
+    padding: 15px 15px 45px 15px;
+  }
+  .mcImageArea {
+    height: 260px;
+    margin-bottom: 20px;
+  }
+  .mcTextArea {
+    padding: 0 10px;
+  }
+  .mcTitle {
+    font-size: 1.8rem;
+  }
+  .mcTitleSub {
+    font-size: 1.3rem;
+  }
+  .mcDesc {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .mcBadge {
+    font-size: 0.85rem;
+    padding: 6px 15px;
+  }
+  .mcFeatureItem {
+    font-size: 1rem;
+  }
+  .mcBtn {
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+  }
+  .tabBtn {
+    font-size: 0.95rem;
+    padding: 1rem 0;
+  }
+
+  .whySellSection {
+    padding: 1.5rem 4%;
+  }
+  .wsContainer {
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 16px;
+    flex-direction: column; /* Stacks on phone */
+  }
+  .wsLeft {
+    width: 100%;
+    max-width: 100%;
+  }
+  .wsImageBox {
+    height: 160px;
+    border-radius: 12px;
+  }
+  .wsRight {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .wsTag {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+  .wsTitle {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+  .wsDesc {
+    display: none;
+  }
+  .wsFeaturesRow {
+    gap: 6px;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .wsFeaturePill {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    gap: 4px;
+    border-radius: 8px;
+  }
+  .wsIcon {
+    font-size: 0.85rem;
+  }
+  .wsBtn {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .whyChooseSection {
+    padding: 3rem 4%;
+  }
+  .wcHeader h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .wcGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+  .wcCard {
+    min-height: 160px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+  .wcCard:last-child {
+    grid-column: span 2;
+  }
+  .wcText h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  .wcText p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .wcIconBg {
+    width: 45px;
+    height: 45px;
+    right: -5px;
+    bottom: -5px;
+  }
+  .wcIcon {
+    font-size: 1.8rem;
+    right: 5px;
+    bottom: 5px;
+  }
+
+  .buyNowSection {
+    padding: 1.5rem 4%;
+  }
+  .bnContainer {
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 16px;
+    flex-direction: column; /* Stacks on phone */
+  }
+  .bnImageContent {
+    width: 100%;
+    max-width: 100%;
+  }
+  .bnImageBox {
+    height: 160px;
+    border-radius: 12px;
+  }
+  .bnTextContent {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .bnTag {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+  .bnTitle {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+  .bnDesc {
+    display: none;
+  }
+  .bnFeaturesRow {
+    gap: 6px;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .bnFeaturePill {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    gap: 4px;
+    border-radius: 8px;
+  }
+  .bnIcon {
+    font-size: 0.85rem;
+  }
+  .bnBtn {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .valuationSection {
+    padding: 4rem 4%;
+  }
+  .valContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .valTextWrap {
+    width: 100%;
+    max-width: 500px;
+  }
+  .valWidgetWrap {
+    width: 100%;
+    max-width: 500px;
+  }
+  .valTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .valDesc {
+    font-size: 1rem;
+  }
+  .valWidget {
+    padding: 1.5rem;
+  }
+  .vwTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .vwFormGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .spanTwo {
+    grid-column: span 1;
+  }
+
+  .vwInputGroup {
+    padding: 0.8rem 1rem;
+  }
+  .vwInput {
+    font-size: 0.95rem;
+  }
+  .vwFloatBadge {
+    display: none;
+  }
+
+  .reviewsSection {
+    padding: 3rem 0 5rem;
+  }
+  .revHeader h2 {
+    font-size: 1.8rem;
+  }
+  .revSliderContainer::before,
+  .revSliderContainer::after {
+    width: 40px;
+  }
+  .revCard {
+    width: 280px;
+    padding: 1.5rem;
+  }
+
+  /* 🔥 FIXED MOBILE CATEGORIES LAYOUT */
+  .mcCategorySection {
+    padding: 1.5rem 4% 0;
+    display: block;
+  }
+  .mcCatHeader {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  .mcCatTitle {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #121212;
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }
+  .mcCatHighlight {
+    color: #004aad;
+  }
+  .mcCatSub {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+  }
+
+  .mcCatGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .mcCatCard {
+    background: #f4f7f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    position: relative;
+    height: 135px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .mcCatName {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #004aad;
+    margin: 0;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    line-height: 1.2;
+    max-width: 60%;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
+  }
+
+  .mcCatCutout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    object-position: right center;
+    transition: transform 0.3s ease;
+  }
+
+  .mcCatCard:hover {
+    border-color: #004aad;
+    box-shadow: 0 8px 20px rgba(0, 74, 173, 0.1);
+  }
+  .mcCatCard:hover .mcCatCutout {
+    transform: scale(1.05);
+  }
+
+  .mcCatMainBtn {
+    display: block;
+    width: 100%;
+    background: #004aad;
+    color: #fff;
+    text-align: center;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 74, 173, 0.3);
+    margin-bottom: 2rem;
+  }
+}
+
+/* ========================================================
+   3. SMALL MOBILE PHONES (iPhone SE, Fold Front <= 400px) 
+   ======================================================== */
+@media (max-width: 400px) {
+  .mCard {
+    padding: 10px 10px 40px 10px;
+  }
+  .mcTextArea {
+    padding: 0 5px 30px;
+  }
+  .mcImageArea {
+    height: 200px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+  }
+  .mcTitle {
+    font-size: 1.5rem;
+  }
+  .mcTitleSub {
+    font-size: 1.1rem;
+  }
+  .mcBadge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+  }
+  .mcDesc {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  .mcFeatureItem {
+    font-size: 0.9rem;
+  }
+  .mcBtn {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+
+  .wsImageBox,
+  .bnImageBox {
+    height: 130px;
+  }
+  .wsTitle,
+  .bnTitle {
+    font-size: 1.25rem;
+  }
+  .wsFeaturePill,
+  .bnFeaturePill {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .valTitle {
+    font-size: 1.6rem;
+  }
+  .vwInputGroup {
+    padding: 0.5rem 0.8rem;
+  }
+  .vwInput {
+    font-size: 0.85rem;
+  }
+
+  .revCard {
+    width: 260px;
+  }
+
+  .mcCatTitle {
+    font-size: 1.5rem;
+  }
+  .mcCatCard {
+    height: 115px;
+  }
+  .mcCatName {
+    font-size: 0.95rem;
+    top: 12px;
+    left: 12px;
+    max-width: 65%;
+  }
+
+  .whatsappFloat {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+  .whatsappFloat img {
+    width: 30px;
+  }
+}
+
+/* WhatsApp Icon */
+.whatsappFloat {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: #25d366;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.whatsappFloat img {
+  width: 35px;
+}

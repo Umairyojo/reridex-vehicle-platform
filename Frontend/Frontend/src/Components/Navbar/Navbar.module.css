@@ -1,0 +1,276 @@
+/* src/Components/Navbar/Navbar.module.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 8%;
+  background-color: var(--bg-white, #ffffff);
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  box-shadow: 0 4px 20px rgba(211, 47, 47, 0.08);
+  transition: all 0.3s ease;
+  height: 75px;
+}
+
+/* --- 🔥 NEW: LEFT SECTION (Logo + Location) --- */
+.leftSection {
+  display: flex;
+  align-items: center;
+  /* Using 60px gap here to account for the scaled-up logo */
+  gap: 60px;
+}
+
+.logoImg {
+  max-height: 55px;
+  width: auto;
+  object-fit: contain;
+  transform: scale(1.8);
+  margin-left: 30px;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.3s ease;
+}
+
+.logoImg:hover {
+  transform: scale(1.9);
+  filter: drop-shadow(0 6px 8px rgba(211, 47, 47, 0.15));
+}
+
+/* --- 🔥 NEW: LOCATION SELECTOR STYLES --- */
+.locationSelector {
+  position: relative;
+}
+
+.locationBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f9fa;
+  border: 1.5px solid #111;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.locationBtn:hover {
+  background-color: #f1f3f5;
+}
+
+.cityText {
+  color: #e85d04; /* Orange text matching your screenshot */
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.chevron {
+  color: #e85d04;
+  transition: transform 0.3s ease;
+}
+
+.chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  width: 160px;
+  z-index: 2005; /* Ensures it stays above other navbar elements */
+}
+
+.dropdownItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: #333;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background-color: #f1f3f5;
+}
+
+.activeCity {
+  font-weight: bold;
+  color: #e85d04;
+  background-color: #fff3ed;
+}
+
+/* --- NAV LINKS --- */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: clamp(1rem, 2.5vw, 3rem); /* Responsive gap for small laptop screens */
+  align-items: center;
+}
+
+.navLink {
+  color: var(--primary-red, #d32f2f);
+  text-decoration: none;
+  font-size: 1rem; /* Slightly reduced for icon space */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: transform 0.3s ease;
+  display: flex; /* 🔥 Changed to Flex for icon alignment */
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+}
+
+/* Icon Styling */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔥 SELL NOW BUTTON STYLE */
+.sellNowBtn {
+  background-color: var(--primary-red, #d32f2f);
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sellNowBtn .icon {
+  color: #ffffff;
+}
+
+.sellNowBtn::after {
+  display: none; /* Removes underline from button */
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-red, #d32f2f);
+  transition: width 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+.navLink:hover:not(.sellNowBtn) {
+  transform: translateY(-2px);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 2001;
+}
+
+.bar {
+  width: 28px;
+  height: 3px;
+  background-color: var(--primary-red, #d32f2f);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+  .navLinks {
+    gap: 1.5rem;
+  }
+  .navLink {
+    font-size: 0.9rem;
+  }
+  .leftSection {
+    gap: 40px;
+  } /* Shrink gap on smaller screens */
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.2rem 5%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-white, #ffffff);
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    box-shadow: none;
+    transition: left 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+
+  .navLinks.active {
+    left: 0;
+  }
+
+  .navLink {
+    font-size: 1.4rem;
+    padding: 1rem 0;
+  }
+
+  .sellNowBtn {
+    width: 80%;
+    justify-content: center;
+  }
+
+  .barOne {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .barTwo {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  .barThree {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .leftSection {
+    gap: 20px;
+  } /* Tighten up on mobile */
+
+  .logoImg {
+    max-height: 50px;
+    transform: scale(1.5); /* Slightly smaller scale for small phones */
+    margin-left: 15px;
+  }
+
+  .locationBtn {
+    padding: 6px 10px;
+  }
+
+  .cityText {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,376 @@
+/* src/Pages/AboutUs/AboutUs.module.css */
+
+.aboutContainer {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  background-color: #fdfdfd;
+  overflow-x: hidden;
+}
+
+.textYellow {
+  color: #ffc107;
+}
+.textBlue {
+  color: #004aad;
+}
+
+/* ==========================================
+   1. HERO SECTION (DIAGONAL CUTOUT)
+   ========================================== */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  background: url("https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1920&auto=format&fit=crop")
+    no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 🔥 Modern Diagonal Cutout Effect */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  margin-bottom: 4rem;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 31, 77, 0.9) 0%,
+    rgba(0, 74, 173, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 5%;
+  max-width: 800px;
+}
+
+.badge {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid #ffc107;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   2. MAIN STORY SECTION
+   ========================================== */
+.storySection {
+  width: 100%;
+  padding: 2rem 5% 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.storyWrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.storyImageSide {
+  flex: 1;
+  position: relative;
+}
+
+.imageDecor {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background: #ffc107;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.floatingCard {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.15);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  border-left: 6px solid #004aad;
+}
+
+.floatNumber {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #004aad;
+  line-height: 1;
+}
+
+.floatText {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #555;
+  margin-top: 5px;
+}
+
+.storyTextSide {
+  flex: 1;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.titleUnderline {
+  width: 60px;
+  height: 4px;
+  background: #ffc107;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.storyParagraph {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================
+   3. CORE PILLARS GRID
+   ========================================== */
+.pillarsSection {
+  width: 100%;
+  padding: 5rem 5%;
+  background-color: #f4f7f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pillarsHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pillarsHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #121212;
+  margin: 0 0 10px 0;
+}
+
+.pillarsHeader p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.pillarsGrid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pillarCard {
+  background: #ffffff;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillarCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 74, 173, 0.1);
+  border-color: #004aad;
+}
+
+.pillarIconWrap {
+  width: 60px;
+  height: 60px;
+  background: #e3f2fd;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+}
+
+.pillarCard:hover .pillarIconWrap {
+  background: #ffc107;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.pillarIcon {
+  font-size: 1.8rem;
+}
+
+.pillarCard h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #121212;
+  margin: 0 0 10px 0;
+}
+
+.pillarCard p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================
+   4. CLOSING BANNER
+   ========================================== */
+.closingSection {
+  width: 100%;
+  padding: 6rem 5%;
+  background: #0b0f19; /* Matches footer */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.closingContent {
+  max-width: 900px;
+}
+
+.closingContent h2 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin: 0 0 1.5rem 0;
+}
+
+.closingContent p {
+  font-size: 1.15rem;
+  color: #a0aabf;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.closingHighlight {
+  font-weight: 700;
+  color: #ffffff !important;
+}
+
+.sloganBox {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #004aad 0%, #005cda 100%);
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 74, 173, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
+   📱 RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .storyWrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .storyTextSide {
+    text-align: center;
+  }
+  .titleUnderline {
+    margin: 0 auto 2rem;
+  }
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+  .heroSection {
+    height: 40vh;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    margin-bottom: 2rem;
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  .pillarsSection {
+    padding: 4rem 5%;
+  }
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
+  .closingContent h2 {
+    font-size: 2rem;
+  }
+  .sloganBox {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    width: 100%;
+  }
+  .floatingCard {
+    right: 0;
+    bottom: -15px;
+    padding: 15px 20px;
+  }
+  .imageDecor {
+    top: -10px;
+    left: -10px;
+  }
+}

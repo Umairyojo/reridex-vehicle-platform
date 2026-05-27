@@ -1,0 +1,451 @@
+/* src/Pages/BikeDetails/BikeDetails.module.css */
+
+.detailsPage {
+  width: 100%;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.textYellow {
+  color: #ffc107;
+}
+
+/* ==========================================
+   BREADCRUMBS
+   ========================================== */
+.breadcrumb {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 2rem;
+}
+
+.breadcrumbInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px 5%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #004aad;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.slash {
+  margin: 0 8px;
+  color: #ccc;
+}
+.currentCrumb {
+  color: #121212;
+  font-weight: 700;
+}
+
+/* ==========================================
+   MAIN GRID SPLIT LAYOUT 
+   ========================================== */
+.mainContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* LEFT: GALLERY SECTION */
+.gallerySection {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mainImageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 500px;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f7f9 100%);
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.offerBadge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ff5722;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.3s ease;
+}
+
+/* Horizontal Scrollable Thumbnails */
+.thumbnailStrip {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.thumbnailStrip::-webkit-scrollbar {
+  height: 6px;
+}
+.thumbnailStrip::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.thumbWrapper {
+  width: 100px;
+  height: 70px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+.thumbWrapper:hover {
+  opacity: 1;
+}
+.activeThumb {
+  border-color: #004aad;
+  opacity: 1;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 74, 173, 0.2);
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shows the full bike without cutting it */
+  padding: 4px; /* Gives the little bikes some breathing room */
+  background-color: #ffffff; /* Makes the background blend perfectly */
+}
+
+/* RIGHT: INFO SECTION */
+.infoSection {
+  width: 100%;
+  position: sticky;
+  top: 100px;
+}
+
+.infoCard {
+  width: 100%;
+  background: #e6f2ff; /* 🔥 The clean Light Icy Blue */
+  border: 1px solid #b3d4ff; /* Matching blue border */
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 74, 173, 0.08); /* Soft blue shadow */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.brandTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.bikeTitle {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #121212;
+  margin: 0;
+  line-height: 1.2;
+  max-width: 85%;
+  letter-spacing: -0.5px;
+}
+
+.wishlistBtn {
+  background: #f8f9fa;
+  border: 1px solid #eaeaea;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.wishlistBtn:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.quickSpecs {
+  font-size: 1.05rem;
+  color: #555;
+  font-weight: 500;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 🔥 Simplified Price Box */
+.priceBox {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 2rem;
+}
+
+.mainPrice {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #121212;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.originalPrice {
+  font-size: 1.15rem;
+  color: #888;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.discountBadge {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* Stacked Action Buttons */
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.testDriveBtn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff5722 0%, #e64a19 100%);
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+}
+.tdMainText {
+  font-weight: 900;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+.refundText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ffe0d2;
+  margin-top: 3px;
+}
+.testDriveBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(255, 87, 34, 0.4);
+}
+
+.callbackBtn {
+  width: 100%;
+  background: #e3f2fd;
+  color: #004aad;
+  border: 1px solid #cce4f7;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.callbackBtn:hover {
+  background: #d0e8fc;
+  border-color: #99cbf2;
+}
+
+/* ==========================================
+   BOTTOM: OVERVIEW GRID
+   ========================================== */
+.overviewContainer {
+  max-width: 1400px;
+  margin: 4rem auto 0;
+  padding: 0 5%;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #121212;
+  margin-bottom: 2rem;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.overviewCard {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: 0.3s;
+}
+.overviewCard:hover {
+  border-color: #004aad;
+  box-shadow: 0 5px 15px rgba(0, 74, 173, 0.08);
+}
+
+.cardIcon {
+  width: 50px;
+  height: 50px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.cardData {
+  display: flex;
+  flex-direction: column;
+}
+.cardLabel {
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.cardValue {
+  font-size: 1.1rem;
+  color: #121212;
+  font-weight: 800;
+}
+
+/* ==========================================
+   🔥 MOBILE RESPONSIVE FIXES
+   ========================================== */
+@media (max-width: 1024px) {
+  .mainContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .infoSection {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 0; /* Remove side padding on mobile to let gallery go edge-to-edge */
+  }
+
+  .mainImageWrapper {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    max-height: none;
+  }
+
+  .thumbnailStrip {
+    padding: 0 5% 10px; /* Bring padding back inside just for thumbnails */
+  }
+
+  .infoCard {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+    border-top: 1px solid #eaeaea;
+    padding: 1.5rem 5%; /* Native mobile app feel */
+  }
+
+  .bikeTitle {
+    font-size: 1.5rem;
+  }
+  .mainPrice {
+    font-size: 2rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .overviewCard {
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  .cardIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

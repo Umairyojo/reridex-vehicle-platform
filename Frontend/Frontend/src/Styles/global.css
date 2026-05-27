@@ -1,0 +1,29 @@
+/* src/Styles/global.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap");
+
+:root {
+  /* Updated Light Theme Palette */
+  --primary-red: #d32f2f;
+  --bg-white: #ffffff;
+  --bg-light-gray: #f8f9fa;
+  --text-black: #121212;
+  --text-gray: #4a4a4a;
+
+  --font-main: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Now using a clean white background */
+  background-color: var(--bg-white);
+  color: var(--text-black);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}

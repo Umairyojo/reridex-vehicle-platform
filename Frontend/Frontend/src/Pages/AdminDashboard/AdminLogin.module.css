@@ -1,0 +1,214 @@
+.loginWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #004aad 0%, #002b6b 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginCard {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logoText {
+  color: #004aad;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.logoText span {
+  color: #ffd100;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.inputGroup input:focus {
+  border-color: #004aad;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
+}
+
+/* Captcha Styling */
+.captchaBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f4f7f6;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px dashed #bbb;
+}
+
+.captchaMath {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #d93025;
+  letter-spacing: 2px;
+  user-select: none; /* Prevents copying */
+}
+
+.captchaInput {
+  flex: 1;
+}
+
+/* Buttons and Links */
+.primaryBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.primaryBtn:hover {
+  background-color: #003380;
+}
+
+.primaryBtn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.linkBtn {
+  background: none;
+  border: none;
+  color: #004aad;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.errorMsg {
+  color: #d93025;
+  background: #fce8e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.successMsg {
+  color: #1e8e3e;
+  background: #e6f4ea;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+/* Add Bike Form Styling */
+.addBikeForm {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  border-color: #004aad;
+  outline: none;
+}
+
+.submitBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #218838;
+}
+
+.submitBtn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.successMsg {
+  color: #1e8e3e;
+  background: #e6f4ea;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
